@@ -3,16 +3,16 @@
 	    <h1>Login</h1>
         <div class="row">
             <div class="col-md-6">
-                <input ng-model="login.username" type="email" class="form-control" placeholder="{{login.username}}">
+                <input type="text" class="form-control" placeholder="enter username" ng-model="login.username">
             </div>
             <div class="col-md-6">
-            	<input ng-model="login.password" type="email" class="form-control" placeholder="{{login.password}}">
+            	<input type="text" class="form-control" placeholder="enter password" ng-model="login.password">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-4">
-            	<button ng-click="login()" type="button" class="btn btn-default">Login</button>
+            	<button ng-click="loginButtonClick(login.username, login.password)" type="button" class="btn btn-default">Login</button>
             </div>
         </div>
     </div>

@@ -10,13 +10,20 @@ angular.module('myApp.controllers', [])
     ])
     .controller('LoginController', ['$scope', 'User',
         function($scope, User) {
+            $scope.user = new User();
+            
             $scope.login = {
                 'username': 'enter username',
                 'password': 'enter password'
             };
 
-            $scope.login = function() {
-                $scope.user = User.get();
+            $scope.loginButtonClick = function() {
+                $scope.user.username = $scope.login.username;
+                $scope.user.password = $scope.login.password;
+                $scope.user.$save(function(response) {
+                    console.log(response);
+                });
+
             }
 
         }

@@ -3,7 +3,17 @@
 /* jasmine specs for controllers go here */
 
 describe('controllers', function() {
+
+    beforeEach(function() {
+        this.addMatchers({
+            toEqualData: function(expected) {
+                return angular.equals(this.actual, expected);
+            }
+        });
+    });
+
     beforeEach(module('myApp.controllers'));
+    beforeEach(module('myApp.services'));
 
     it('should create login model with username and password', inject(function($controller) {
         var scope = {},
@@ -14,7 +24,7 @@ describe('controllers', function() {
         expect(scope.login).toBeDefined();
         expect(scope.login.username).toEqual('enter username');
         expect(scope.login.password).toEqual('enter password');
-        
+
     }));
 
 
@@ -33,4 +43,43 @@ describe('controllers', function() {
         });
         expect(myCtrl2).toBeDefined();
     }));
+
+    describe('LoginController', function() {
+        var scope, ctrl, $httpBackend;
+
+        beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+            $httpBackend = _$httpBackend_;
+            $httpBackend.expectPOST('http://localhost:8080/user').
+            respond({
+                message: 'Login reuqest recieved!',
+                user: 'liam',
+                password: '12345'
+            });
+
+            scope = $rootScope.$new();
+            ctrl = $controller('LoginController', {
+                $scope: scope
+            });
+        }));
+
+
+        it('should create user model with four users fetched from server', function() {
+            expect(scope.user).toBeDefined();
+            scope.loginButtonClick();
+            $httpBackend.flush();
+
+            expect(scope.user).toEqualData(
+                {
+                message: 'Login reuqest recieved!',
+                user: 'liam',
+                password: '12345'
+            });
+        });
+
+
+        // it('should set the default value of orderProp model', function() {
+        //     expect(scope.orderProp).toBe('age');
+        // });
+    });
+
 });

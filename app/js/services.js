@@ -11,5 +11,5 @@ myAppServices.value('version', '0.1');
 
 myAppServices.factory('User', ['$resource',
   function($resource){
-    return $resource('/user/:userName', {userName:'@username'}); 
+    return $resource('http://localhost:8080/user'); 
   }]);
