@@ -10,7 +10,8 @@
         "express": "~4.0.0",
         "express-generator": "*",
         "body-parser": "~1.0.1",
-        "mongodb": "*"
+        "mongodb": "*",
+        "mongoose": "*"
     },
     "devDependencies": {
         "karma": "~0.10",
