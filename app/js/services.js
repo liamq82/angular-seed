@@ -10,6 +10,13 @@ var myAppServices = angular.module('myApp.services', ['ngResource']);
 myAppServices.value('version', '0.1');
 
 myAppServices.factory('User', ['$resource',
-  function($resource){
-    return $resource('http://localhost:8080/user'); 
-  }]);
+    function($resource) {
+        return $resource('http://localhost:8080/user');
+    }
+]);
+
+myAppServices.factory('authentication', ['$resource',
+    function($resource) {
+        return $resource('http://localhost:8080/authentication');
+    }
+]);

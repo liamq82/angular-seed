@@ -22,8 +22,30 @@ describe('my app', function() {
             expect(usernameInput.getAttribute('placeholder')).toBe('enter username');
             expect(passwordInput.getAttribute('placeholder')).toBe('enter password');
         });
+    });
 
+    describe('Window or door selection', function() {
 
+        beforeEach(function() {
+            browser.get('index.html#/windowOrDoor');
+        });
+
+        it('should render window or door page when user navigates to window or door page and is logged in.', function() {
+            expect(element.all(by.css('[ng-view] h4')).first().getText()).
+            toMatch(/What would you like to build?/);
+        });
+
+        it('should tell user that door is currently selected', function() {
+            var selection = element(by.css('.selection'));
+            expect(selection.getText()).toMatch(/You have selected Window/);
+        });
+
+        it('should change based on users selection', function() {
+            var buttons = element.all(by.css('.btn'));
+            expect(buttons.count()).toBe(3);
+            buttons.get(1).click();
+            expect(element(by.css('.selection')).getText()).toMatch(/You have selected Door/);
+        });
 
     });
 

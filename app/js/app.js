@@ -24,6 +24,10 @@ config(['$routeProvider',
             templateUrl: 'partials/login.html',
             controller: 'LoginController'
         });
+        $routeProvider.when('/windowOrDoor', {
+            templateUrl: 'partials/windowOrDoor.html',
+            controller: 'ChooseController'
+        });
         $routeProvider.otherwise({
             redirectTo: '/view1'
         });

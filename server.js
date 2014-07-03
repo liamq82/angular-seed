@@ -32,10 +32,10 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.send([{
+    res.send({
         authentication: false,
         url: '/login'
-    }]);
+    });
 }
 
 passport.use(new LocalStrategy(
@@ -78,10 +78,11 @@ app.post('/user',
         failureFlash: false
     }), function(req, res) {
         res.send({
-            message: 'Successful authentication'
-    });
+            authentication: true,
+            redirect: '/windowOrDoor'
+        });
 
-});
+    });
 
 
 router.route('/adduser').post(function(req, res) {
@@ -123,6 +124,14 @@ router.route('/user').delete(function(req, res) {
         });
     });
 });
+
+app.get('/authentication', ensureAuthenticated,
+    function(req, res) {
+       res.json({
+            authenticated: 'true'
+        }); 
+});
+
 
 app.use(router);
 

@@ -68,18 +68,33 @@ describe('controllers', function() {
             scope.loginButtonClick();
             $httpBackend.flush();
 
-            expect(scope.user).toEqualData(
-                {
+            expect(scope.user).toEqualData({
                 message: 'Login reuqest recieved!',
                 user: 'liam',
                 password: '12345'
             });
         });
-
-
-        // it('should set the default value of orderProp model', function() {
-        //     expect(scope.orderProp).toBe('age');
-        // });
     });
+
+    describe('ChooseController', function() {
+
+        it('should create a radio model to hold window/door selection', inject(function($controller) {
+            var scope = {},
+                ChooseController = $controller('ChooseController', {
+                    $scope: scope
+                });
+            expect(ChooseController).toBeDefined();
+            expect(scope.selection).toBeDefined();
+            expect(scope.radioModel).toEqual('Window');
+            expect(scope.checkModel).toEqual({
+                left: true,
+                right: false
+            });
+
+        }));
+
+
+    });
+
 
 });

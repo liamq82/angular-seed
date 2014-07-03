@@ -1,0 +1,22 @@
+<div class='container'>
+    <div class='jumbotron'>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>What would you like to build?</h4>
+            </div>
+            <div class="col-md-4">
+                <div class="btn-group">
+                    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Window'">Window</label>
+                    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Door'">Door</label>
+                </div>
+            </div>
+        </div>
+        <pre class='selection'>You have selected {{radioModel || 'null'}}</pre>
+        <br>
+        <div class="row">
+            <div class="col-md-2">
+                <button ng-click="next()" type="button" class="btn btn-default">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
