@@ -103,11 +103,42 @@ describe('controllers', function() {
                 ChooseController = $controller('SelectWindowDesignController', {
                     $scope: scope
                 });
+            var designA = scope.windows[0];
             expect(ChooseController).toBeDefined();
-            expect(scope.window).toEqual({
-                design: 'Design A',
-                description: 'Top hung window over side hung window. Ideal for kitchen, living room and bedroom.'
-            });
+            expect(scope.windows).toBeDefined();
+            expect(designA).toBeDefined();
+            expect(designA.quantity).toBe(0);
+        }));
+
+        it('should be able to increase the quantity of windows in the model', inject(function($controller) {
+            var scope = {},
+                ChooseController = $controller('SelectWindowDesignController', {
+                    $scope: scope
+                });
+            var designA = scope.windows[0];
+            expect(designA.quantity).toBe(0);
+
+            scope.add(0);
+            expect(designA.quantity).toBe(1);
+
+        }));
+
+        it('should be able to decrease the quantity of windows in the model', inject(function($controller) {
+            var scope = {},
+                ChooseController = $controller('SelectWindowDesignController', {
+                    $scope: scope
+                });
+            var designB = scope.windows[1];
+            expect(designB.quantity).toBe(0);
+
+            scope.add(1);
+            scope.add(1);
+            scope.add(1);
+            expect(designB.quantity).toBe(3);
+
+            scope.remove(1);
+            expect(designB.quantity).toBe(2);
+
 
         }));
 

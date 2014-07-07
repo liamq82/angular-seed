@@ -5,7 +5,12 @@ AngularJS, Node, MongoDB, Mongoose, Express.
 Setup:
 
 cd C:\Users\liam\Documents\GitHub\angular-seed
+npm start
+npm test
+npm run protractor
 
-cd 'C:\Program Files\MongoDB 2.6 Standard\bin' ./mongod --dbpath C:\Users\liam\Documents\GitHub\angular-seed\data
+cd 'C:\Program Files\MongoDB 2.6 Standard\bin'
+./mongod --dbpath C:\Users\liam\Documents\GitHub\angular-seed\data
 
-cd C:\Users\liam\AppData\Local\Google\Chrome\Application ./chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+cd C:\Users\liam\AppData\Local\Google\Chrome\Application
+./chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security

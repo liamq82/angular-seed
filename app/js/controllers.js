@@ -57,39 +57,17 @@ angular.module('myApp.controllers', [])
             };
         }
     ])
-    .controller('SelectWindowDesignController', ['$scope',
-        function($scope) {
+    .controller('SelectWindowDesignController', ['$scope', 'WindowsService',
+        function($scope, WindowsService) {
+            $scope.windows = WindowsService;
 
-            $scope.windows = [{
-                url: 'img/windows/design_a.png',
-                design: 'Design A',
-                description: 'Top hung window over side hung window. Ideal for kitchen, living room and bedroom.'
-            }, {
-                url: 'img/windows/design_b.png',
-                design: 'Design B',
-                description: 'Side hung window with large fixed pane. Ideal for kitchen, living room and bedroom.'
-            }, {
-                url: 'img/windows/design_c.png',
-                design: 'Design C',
-                description: 'Side hung window with small fixed pane. Ideal for landing or small bedroom window.'
-            },{
-                url: 'img/windows/design_a.png',
-                design: 'Design D',
-                description: 'Top hung window over side hung window. Ideal for kitchen, living room and bedroom.'
-            }, {
-                url: 'img/windows/design_b.png',
-                design: 'Design E',
-                description: 'Side hung window with large fixed pane. Ideal for kitchen, living room and bedroom.'
-            }, {
-                url: 'img/windows/design_c.png',
-                design: 'Design F',
-                description: 'Side hung window with small fixed pane. Ideal for landing or small bedroom window.'
-            }];
+            $scope.add = function($index) {
+                $scope.windows[$index].quantity++;
+            }
 
-            $scope.window = {
-                design: 'Design A',
-                description: 'Top hung window over side hung window. Ideal for kitchen, living room and bedroom.'
-            };
+            $scope.remove = function($index) {
+                $scope.windows[$index].quantity--;
+            }
         }
     ])
     .controller('MyCtrl2', ['$scope',

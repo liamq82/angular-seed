@@ -49,6 +49,25 @@ describe('my app', function() {
 
     });
 
+    describe('Select window design view', function() {
+
+        beforeEach(function() {
+            browser.get('index.html#/selectWindow');
+        });
+
+        it('should render selectWindow view when user navigates to /selectWindow', function() {
+            expect(element.all(by.css('[ng-view] h1')).first().getText()).
+            toMatch(/Select design/);
+        });
+
+        it('should render selectWindow view when user navigates to /selectWindow', function() {
+            var windows = element.all(by.repeater('window in windows'));
+            expect(windows.count()).toBe(6);
+        });
+
+    });
+
+
     describe('view1', function() {
 
         beforeEach(function() {
