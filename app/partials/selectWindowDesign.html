@@ -1,18 +1,22 @@
 <div class='container'>
     <div class='jumbotron'>
-        <p>Select design.</p>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="img/windows/design_a.png">
-                    <div class="caption">
-                        <h3>Design A</h3>
-                        <p>Top hung window over side hung window.</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a>  <a href="#" class="btn btn-default" role="button">Button</a>
-                        </p>
+        <h1>Select design.</h1>
+
+        <div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4" ng-repeat="window in windows">
+                    <div class="thumbnail">
+                        <img ng-src="{{window.url}}">
+                        <div class="caption">
+                            <h3>{{window.design}}</h3>
+                            <p>{{window.description}}</p>
+                            <button ng-click="chooseDesign()" type="button" class="btn btn-primary">Select</button>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>

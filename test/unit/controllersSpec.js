@@ -96,5 +96,23 @@ describe('controllers', function() {
 
     });
 
+    describe('SelectWindowDesignController', function() {
+
+        it('should create a window model object', inject(function($controller) {
+            var scope = {},
+                ChooseController = $controller('SelectWindowDesignController', {
+                    $scope: scope
+                });
+            expect(ChooseController).toBeDefined();
+            expect(scope.window).toEqual({
+                design: 'Design A',
+                description: 'Top hung window over side hung window. Ideal for kitchen, living room and bedroom.'
+            });
+
+        }));
+
+
+    });
+
 
 });
