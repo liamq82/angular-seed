@@ -33,9 +33,10 @@ angular.module('myApp.controllers', [])
 
         }
     ])
-    .controller('ChooseController', ['$scope', 'authentication',
-        function($scope, authentication) {
+    .controller('ChooseController', ['$scope', 'authentication', '$location',
+        function($scope, authentication, location) {
             $scope.authentication = new authentication();
+
             $scope.authentication.$get(function(response) {
                 if (response.authentication === false) {
                     alert('Must log in first!');
@@ -44,11 +45,21 @@ angular.module('myApp.controllers', [])
 
             $scope.selection = 'Please make a selection'
             $scope.radioModel = 'Window';
+            $scope.url = '/select' + $scope.radioModel;
 
             $scope.checkModel = {
                 left: true,
                 right: false
             };
+
+            $scope.nextButton = function() {
+                location.path($scope.url);
+            };
+        }
+    ])
+    .controller('SelectWindowDesignController', ['$scope',
+        function($scope) {
+
         }
     ])
     .controller('MyCtrl2', ['$scope',

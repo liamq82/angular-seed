@@ -28,6 +28,10 @@ config(['$routeProvider',
             templateUrl: 'partials/windowOrDoor.html',
             controller: 'ChooseController'
         });
+        $routeProvider.when('/selectWindow', {
+            templateUrl: 'partials/selectWindowDesign.html',
+            controller: 'SelectWindowDesignController'
+        });
         $routeProvider.otherwise({
             redirectTo: '/view1'
         });

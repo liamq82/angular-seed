@@ -90,7 +90,7 @@ describe('controllers', function() {
                 left: true,
                 right: false
             });
-
+            expect(scope.url).toEqual('/selectWindow');
         }));
 
 
