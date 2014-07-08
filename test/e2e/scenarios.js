@@ -60,9 +60,60 @@ describe('my app', function() {
             toMatch(/Select design/);
         });
 
-        it('should render selectWindow view when user navigates to /selectWindow', function() {
+        it('should render 6 window designs', function() {
             var windows = element.all(by.repeater('window in windows'));
             expect(windows.count()).toBe(6);
+        });
+
+        it('should be able to increase the quantity of window design A by pressing the add button for this window', function() {
+            var addButtons = element.all(by.buttonText('Add'));
+            expect(addButtons.count()).toBe(6);
+
+            element.all(by.css('.panel-body')).then(function(panels) {
+                expect(panels.length).toBe(6);
+                expect(panels[0].getText()).toBe('0 windows');
+            });
+
+            addButtons.get(0).click();
+            element.all(by.css('.panel-body')).then(function(panels) {
+                expect(panels.length).toBe(6);
+                expect(panels[0].getText()).toBe('1 windows');
+            });
+
+            addButtons.get(0).click();
+            element.all(by.css('.panel-body')).then(function(panels) {
+                expect(panels.length).toBe(6);
+                expect(panels[0].getText()).toBe('2 windows');
+            });
+        });
+
+        it('should be able to increase/decrease the quantity of window design B by pressing the add/remove button for this window but should not decrease quantity below 0', function() {
+            var addButtons = element.all(by.buttonText('Add'));
+            var removeButtons = element.all(by.buttonText('Remove'));
+            expect(addButtons.count()).toBe(6);
+
+            element.all(by.css('.panel-body')).then(function(panels) {
+                expect(panels.length).toBe(6);
+                expect(panels[1].getText()).toBe('0 windows');
+            });
+
+            addButtons.get(1).click();
+            element.all(by.css('.panel-body')).then(function(panels) {
+                expect(panels.length).toBe(6);
+                expect(panels[1].getText()).toBe('1 windows');
+            });
+
+            removeButtons.get(1).click();
+            element.all(by.css('.panel-body')).then(function(panels) {
+                expect(panels.length).toBe(6);
+                expect(panels[1].getText()).toBe('0 windows');
+            });
+
+            removeButtons.get(1).click();
+            element.all(by.css('.panel-body')).then(function(panels) {
+                expect(panels.length).toBe(6);
+                expect(panels[1].getText()).toBe('0 windows');
+            });
         });
 
     });

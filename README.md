@@ -8,6 +8,7 @@ cd C:\Users\liam\Documents\GitHub\angular-seed
 npm start
 npm test
 npm run protractor
+node server.js
 
 cd 'C:\Program Files\MongoDB 2.6 Standard\bin'
 ./mongod --dbpath C:\Users\liam\Documents\GitHub\angular-seed\data

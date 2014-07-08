@@ -66,7 +66,21 @@ angular.module('myApp.controllers', [])
             }
 
             $scope.remove = function($index) {
-                $scope.windows[$index].quantity--;
+                if ($scope.windows[$index].quantity > 0) {
+                    $scope.windows[$index].quantity--;
+                }
+            }
+
+            $scope.next = function() {
+                var windowSelected = false;
+                angular.forEach($scope.windows, function(window, key) {
+                    if(window.quantity > 0){
+                        windowSelected = true;
+                    }
+                });
+                if(!windowSelected){
+                    alert('You have not selected any windows yet!');
+                }
             }
         }
     ])
